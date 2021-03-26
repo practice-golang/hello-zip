@@ -12,7 +12,7 @@ type Wk struct {
 	wr *zip.Writer
 }
 
-func (wk Wk) Walker(path string, info os.FileInfo, err error) error {
+func (wk *Wk) Walker(path string, info os.FileInfo, err error) error {
 	fmt.Printf("Crawling: %#v\n", path)
 	if err != nil {
 		return err
