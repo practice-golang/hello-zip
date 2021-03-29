@@ -49,12 +49,12 @@ func main() {
 	}
 	defer file.Close()
 
-	walker := func(path string, info os.FileInfo, err error) error {
-		fwr := Wk{
-			wr: zip.NewWriter(file),
-		}
-		defer fwr.wr.Close()
+	fwr := Wk{
+		wr: zip.NewWriter(file),
+	}
+	defer fwr.wr.Close()
 
+	walker := func(path string, info os.FileInfo, err error) error {
 		err = fwr.Walker(path, info, err)
 		return err
 	}
